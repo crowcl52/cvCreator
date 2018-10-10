@@ -14,15 +14,31 @@
   </div>
   <!-- formulario de contacto -->
   <form action="">
-    <div class="form-group">
-      <label for="Name">Name</label>
-      <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="ejem. John Doe">
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="ejem. email@gmail.com">
-    </div>
     <div class="form-row">
+      <div class="col">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="ejem. John Doe">
+      </div>
+      <div class="col">
+        <label for="Name">Title</label>
+        <input type="text" class="form-control" name="Title" aria-describedby="name" placeholder="ejem. Engineer">
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <div class="col">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="ejem. email@gmail.com">
+      </div>
+      <div class="col">
+        <label for="Name">Country</label>
+        <input type="text" class="form-control" name="country" aria-describedby="country" placeholder="ejem. México">
+      </div>
+      <div class="col">
+        <label for="Name">City</label>
+        <input type="text" class="form-control" name="country" aria-describedby="country" placeholder="ejem. Guadalajara">
+      </div>
+    </div>
+    <div class="form-row mt-3">
       <div class="col">
         <label for="age">Age</label>
         <input type="number" class="form-control" name="age" placeholder="ejem. 22">
@@ -33,6 +49,73 @@
       </div>
     </div>
   </form>
+
+  <!-- Social information -->
+  <h2 class="mt-5">Social Links</h2>
+  <form action="">
+    <div class="form-row">
+      <div class="col">
+        <label class="sr-only" for="facebook">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-facebook"></i> </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+      <div class="col">
+        <label class="sr-only" for="inlineFormInputGroup">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-pinterest-square"></i></div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <div class="col">
+        <label class="sr-only" for="facebook">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-instagram"></i> </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+      <div class="col">
+        <label class="sr-only" for="facebook">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-twitter"></i> </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <div class="col">
+        <label class="sr-only" for="facebook">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-linkedin-in"></i> </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+      <div class="col">
+        <label class="sr-only" for="facebook">Url</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fab fa-github"></i> </div>
+          </div>
+          <input type="text" class="form-control" placeholder="Url">
+        </div>
+      </div>
+    </div>
+
+  </form>
+
   <!-- Style information -->
   <h2 class="mt-5">General Style</h2>
   <form action="">
@@ -67,23 +150,69 @@
       </div>
     </div>
     <div class="form-row mt-3">
-        <div class="col">
-          <label for="title">Titles Color</label>
+      <div class="col">
+        <label for="title">Titles Color</label>
+        <select class="form-control" name="background">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="text">Texts Color</label>
+        <select class="form-control" name="container">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <div class="col">
+        <label for="title">Footer Color</label>
+        <select class="form-control" name="background">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="text">Social Color</label>
+        <select class="form-control" name="container">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+        <div class="col-6">
+          <label for="title">Icons Color</label>
           <select class="form-control" name="background">
-            <option class="bg-dark text-white" value="white"> white</option>
-            <option class="text-primary" value="primary"> primary </option>
-            <option class="text-secondary" value="white"> secondary </option>
-            <option class="text-success" value="secondary"> success </option>
-            <option class="text-danger" value="danger"> danger </option>
-            <option class="text-warning" value="warning"> warning </option>
-            <option class="text-info" value="info"> info </option>
-            <option class="bg-dark text-light" value="light"> light </option>
-            <option class="text-dark" value="dark"> dark </option>
-          </select>
-        </div>
-        <div class="col">
-          <label for="text">Texts Color</label>
-          <select class="form-control" name="container">
             <option class="bg-dark text-white" value="white"> white</option>
             <option class="text-primary" value="primary"> primary </option>
             <option class="text-secondary" value="white"> secondary </option>
