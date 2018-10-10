@@ -1,0 +1,22 @@
+<div class="full principal">
+  <div class="content-wrapper">
+    <h2 class="text-light">Login</h2>
+    <div class="form-wrapper">
+      <form class="row">
+        <div class="form-group col-12">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group col-12">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary col-12">Login</button>
+      </form>
+      <div class="switch-container">
+          <p class="font-weight-bold">No estas registrado?</p>
+          <a [routerLink]="['/register']" class="font-weight-normal cursor">Crear una cuenta</a>
+      </div>
+    </div>
+  </div>
+</div>

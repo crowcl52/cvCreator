@@ -1,0 +1,100 @@
+<div class="container mb-5">
+  <h2>Personal Information</h2>
+  <!-- Image -->
+  <div class="image-wrapper">
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Profile Image</label> <br>
+      <small class="text-info">Click on image to edit</small>
+      <input type="file" class="form-control-file none" id="profileImg" (change)="cambio($event,'img_destino')" accept="image/x-png,image/jpeg">
+    </div>
+    <div class="image-container cursor" (click)="clickInput('profileImg')">
+      <i *ngIf="!change" class="fas fa-plus-circle fa-10x text-primary"></i>
+      <img id="img_destino" *ngIf="change" [src]="image" alt="img" class="picture img-thumbnail">
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form action="">
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="ejem. John Doe">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="ejem. email@gmail.com">
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" name="age" placeholder="ejem. 22">
+      </div>
+      <div class="col">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" name="phone" placeholder="ejem. 333-333-333">
+      </div>
+    </div>
+  </form>
+  <!-- Style information -->
+  <h2 class="mt-5">General Style</h2>
+  <form action="">
+    <div class="form-row">
+      <div class="col">
+        <label for="background">Background Color</label>
+        <select class="form-control" name="background">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="container">Containers Color</label>
+        <select class="form-control" name="container">
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row mt-3">
+        <div class="col">
+          <label for="title">Titles Color</label>
+          <select class="form-control" name="background">
+            <option class="bg-dark text-white" value="white"> white</option>
+            <option class="text-primary" value="primary"> primary </option>
+            <option class="text-secondary" value="white"> secondary </option>
+            <option class="text-success" value="secondary"> success </option>
+            <option class="text-danger" value="danger"> danger </option>
+            <option class="text-warning" value="warning"> warning </option>
+            <option class="text-info" value="info"> info </option>
+            <option class="bg-dark text-light" value="light"> light </option>
+            <option class="text-dark" value="dark"> dark </option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="text">Texts Color</label>
+          <select class="form-control" name="container">
+            <option class="bg-dark text-white" value="white"> white</option>
+            <option class="text-primary" value="primary"> primary </option>
+            <option class="text-secondary" value="white"> secondary </option>
+            <option class="text-success" value="secondary"> success </option>
+            <option class="text-danger" value="danger"> danger </option>
+            <option class="text-warning" value="warning"> warning </option>
+            <option class="text-info" value="info"> info </option>
+            <option class="bg-dark text-light" value="light"> light </option>
+            <option class="text-dark" value="dark"> dark </option>
+          </select>
+        </div>
+      </div>
+  </form>
+</div>

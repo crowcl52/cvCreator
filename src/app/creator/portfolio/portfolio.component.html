@@ -1,0 +1,43 @@
+<!-- skills -->
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-2">
+      <h2>Portfolio</h2>
+    </div>
+    <div class="col-3">
+      <small (click)="showItem=!showItem" class="cursor text-primary">Add new</small>
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form [ngClass]="{none: !showItem}" action="" class="mt-2">
+    <div class="form-row">
+      <div class="col-8">
+        <label for="imageReference">Cover Image</label>
+        <input type="file" class="form-control-file" id="imageReference">
+      </div>
+    </div>
+    <div class="form-row mt-4">
+      <div class="col-12 col-md-3">
+        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: My first Project">
+      </div>
+      <div class="col-12 col-md-3">
+        <input type="url" class="form-control" name="percentage" aria-describedby="percentage" placeholder="url: http://myblog.com">
+      </div>
+
+      <div class="col-12 col-md-3">
+        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Cards view -->
+  <div class="skill-wrapper mt-3 row">
+    <!-- ngFor -->
+    <div class="skill-item col-7 mt-2">
+        <div class="container-img">
+            <img src="./assets/login.jpg" alt="Avatar" class="image">
+            <div class="overlay">Dashbord</div>
+          </div>
+    </div>
+  </div>
+</div>

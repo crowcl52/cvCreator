@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">CvCreator</span>
+  <button class="btn btn-link" (click)="showSide()">
+    <i class="fas fa-bars text-light"></i>
+  </button>
+</nav>
+
+<div id="sidebar" class="side hide">
+
+    <a [routerLink]="['']" class="side-item" (click)="showSide()" >
+      <i class="fas fa-user-tie"></i>
+      <span> Personal</span>
+    </a>
+  
+    <a [routerLink]="['/skill']" class="side-item" (click)="showSide()" >
+      <i class="fas fa-chart-pie"></i>
+      <span> skills </span>
+    </a>
+  
+    <a [routerLink]="['/work']" class="side-item" (click)="showSide()" >
+      <i class="fas fa-briefcase"></i>
+      <span> Works </span>
+    </a>
+  
+    <a [routerLink]="['/education']" class="side-item" (click)="showSide()" >
+      <i class="fas fa-graduation-cap"></i>
+      <span> Education </span>
+    </a>
+  
+    <a [routerLink]="['/portfolio']" class="side-item" (click)="showSide()" >
+      <i class="fas fa-folder"></i>
+      <span> Portfolio </span>
+    </a>
+  
+    <a href="" class="side-item cursor">
+      <i class="fas fa-sign-out-alt"></i>
+      <span> Signout </span>
+    </a>
+  
+  </div>

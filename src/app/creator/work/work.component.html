@@ -1,0 +1,77 @@
+<!-- skills -->
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-2">
+      <h2>Works</h2>
+    </div>
+    <div class="col-3">
+      <small (click)="showWork=!showWork" class="cursor text-primary">Add Work</small>
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form [ngClass]="{none: !showWork}" action="" class="mt-2">
+    <div class="form-row">
+      <div class="col-12 col-md-3">
+        <label for="position">Position</label>
+        <input type="text" class="form-control" name="position" aria-describedby="name" placeholder="ejem. Web Developer">
+      </div>
+      <div class="col-12 col-md-3">
+        <label for="place">Place</label>
+        <input type="text" class="form-control" name="place" aria-describedby="name" placeholder="ejem. Intell">
+      </div>
+      <div class="col-12 col-md-3">
+        <label for="date">Start Date</label>
+        <input type="date" class="form-control" name="age">
+      </div>
+      <div class="col-12 col-md-3">
+        <label for="date">Finish Date</label>
+        <input type="date" class="form-control" name="age">
+      </div>
+    </div>
+    <div class="form-row mt-3">
+      <div class="col-12 col-md-11">
+        <textarea placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+      </div>
+      <div class="col-12 col-md-1">
+        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Work view -->
+  <div class="work-wrapper mt-3 row">
+    <!-- ngFor -->
+    <div class="work-item col-7 mt-2">
+      <label>Programming / Hp Inc.</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <div class="row">
+        <div class="col-7">
+          <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
+        </div>
+        <div class="col7">
+          <p class="mt-2 ml-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident natus
+            nobis possimus debitis harum,
+            molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum quisquam!
+          </p>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+    </div>
+    <div class="work-item col-7 mt-2">
+      <label>Programming / Hp Inc.</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <div class="row">
+        <div class="col-7">
+          <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
+        </div>
+        <div class="col7">
+          <p class="mt-2 ml-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident natus
+            nobis possimus debitis harum,
+            molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum quisquam!
+          </p>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+    </div>
+  </div>
+</div>

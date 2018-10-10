@@ -1,0 +1,174 @@
+<!-- skills -->
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-1">
+      <h2>Skills</h2>
+    </div>
+    <div class="col-3">
+      <small (click)="showSkill=!showSkill" class="cursor text-primary">Add Skill</small>
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form [ngClass]="{none: !showSkill}" action="" class="mt-2">
+    <div class="form-row">
+      <div class="col-12 col-md-3">
+        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: Programming">
+      </div>
+      <div class="col-12 col-md-3">
+        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+      </div>
+      <div class="col-12 col-md-3">
+        <select class="form-control" name="container">
+          <option disabled>Color Bar</option>
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col-12 col-md-3">
+        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Skills view -->
+  <div class="skill-wrapper mt-3 row">
+    <!-- ngFor -->
+    <div class="skill-item col-7 mt-2">
+      <label>Programming</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+    <div class="skill-item col-7 mt-2">
+      <label>Design</label>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- language -->
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-2">
+      <h2>Language</h2>
+    </div>
+    <div class="col-3">
+      <small (click)="showLanguage=!showLanguage" class="cursor text-primary">Add language</small>
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form [ngClass]="{none: !showLanguage}" action="" class="mt-2">
+    <div class="form-row">
+      <div class="col-12 col-md-3">
+        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: Spanish">
+      </div>
+      <div class="col-12 col-md-3">
+        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+      </div>
+      <div class="col-12 col-md-3">
+        <select class="form-control" name="container">
+          <option disabled>Color Bar</option>
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col-12 col-md-3">
+        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Skills view -->
+  <div class="skill-wrapper mt-3 row">
+    <!-- ngFor -->
+    <div class="skill-item col-7 mt-2">
+      <label>Spanish</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+    <div class="skill-item col-7 mt-2">
+      <label>English</label>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tools -->
+<div class="container mb-5">
+  <div class="row align-items-center">
+    <div class="col-1">
+      <h2>Tools</h2>
+    </div>
+    <div class="col-3">
+      <small (click)="showTool=!showTool" class="cursor text-primary">Add Tool</small>
+    </div>
+  </div>
+  <!-- formulario de contacto -->
+  <form [ngClass]="{none: !showTool}" action="" class="mt-2">
+    <div class="form-row">
+      <div class="col-12 col-md-3">
+        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: C#, Photoshop">
+      </div>
+      <div class="col-12 col-md-3">
+        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+      </div>
+      <div class="col-12 col-md-3">
+        <select class="form-control" name="container">
+          <option disabled>Color Bar</option>
+          <option class="bg-dark text-white" value="white"> white</option>
+          <option class="text-primary" value="primary"> primary </option>
+          <option class="text-secondary" value="white"> secondary </option>
+          <option class="text-success" value="secondary"> success </option>
+          <option class="text-danger" value="danger"> danger </option>
+          <option class="text-warning" value="warning"> warning </option>
+          <option class="text-info" value="info"> info </option>
+          <option class="bg-dark text-light" value="light"> light </option>
+          <option class="text-dark" value="dark"> dark </option>
+        </select>
+      </div>
+      <div class="col-12 col-md-3">
+        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Skills view -->
+  <div class="skill-wrapper mt-3 row">
+    <!-- ngFor -->
+    <div class="skill-item col-7 mt-2">
+      <label>C# </label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+    <div class="skill-item col-7 mt-2">
+      <label>Photoshop</label>
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+          aria-valuemax="100">25%</div>
+      </div>
+    </div>
+  </div>
+</div>
