@@ -2,16 +2,35 @@
     <div class="content-wrapper">
       <h2 class="text-light">Registarse</h2>
       <div class="form-wrapper">
-        <form class="row">
+        <form (ngSubmit)="onSubmit(f.value)" class="row" #f="ngForm">
           <div class="form-group col-12">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <label>Email</label>
+            <input type="email" 
+                   class="form-control" 
+                   placeholder="Enter email"
+                   ngModel
+                   name="email"
+                   required>
           </div>
           <div class="form-group col-12">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label>User</label>
+            <input type="text" 
+                   class="form-control" 
+                   placeholder="User"
+                   ngModel
+                   name="user"
+                   required>
           </div>
-          <button type="submit" class="btn btn-primary col-12">Login</button>
+          <div class="form-group col-12">
+            <label>Password</label>
+            <input type="password" 
+                   class="form-control" 
+                   placeholder="Password"
+                   ngModel
+                   name="password"
+                   required>
+          </div>
+          <button [disabled]="f.invalid" type="submit" class="btn btn-primary col-12">Crear Cuenta</button>
         </form>
         <div class="switch-container">
             <p class="font-weight-bold">Ya tienes cuenta?</p>

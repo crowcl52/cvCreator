@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 // Modulos
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -41,6 +41,7 @@ import { ViewerComponent } from './viewer/viewer.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
