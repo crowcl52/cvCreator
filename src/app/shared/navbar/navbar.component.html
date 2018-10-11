@@ -7,7 +7,7 @@
 
 <div id="sidebar" class="side hide">
 
-    <a [routerLink]="['']" class="side-item" (click)="showSide()" >
+    <a [routerLink]="['/']" class="side-item" (click)="showSide()" >
       <i class="fas fa-user-tie"></i>
       <span> Personal</span>
     </a>
@@ -31,8 +31,13 @@
       <i class="fas fa-folder"></i>
       <span> Portfolio </span>
     </a>
+
+    <a [routerLink]="['/view/5']" class="side-item" (click)="showSide()" target="_blank" >
+      <i class="fas fa-file-invoice"></i>
+      <span> MyCv </span>
+    </a>
   
-    <a href="" class="side-item cursor">
+    <a [routerLink]="['/login']" class="side-item cursor">
       <i class="fas fa-sign-out-alt"></i>
       <span> Signout </span>
     </a>
