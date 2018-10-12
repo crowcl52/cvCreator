@@ -37,7 +37,7 @@
       <span> MyCv </span>
     </a>
   
-    <a [routerLink]="['/login']" class="side-item cursor">
+    <a (click)="logout()" class="side-item cursor" style="color:white">
       <i class="fas fa-sign-out-alt"></i>
       <span> Signout </span>
     </a>

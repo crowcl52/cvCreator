@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-info',
@@ -11,7 +12,7 @@ export class InfoComponent implements OnInit {
   profileImg;
   change:boolean = false;
 
-  constructor() { }
+  constructor( private toastr: ToastrService ) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,7 @@ export class InfoComponent implements OnInit {
   // Funcion para tomar la imagen
   clickInput(idElem){
     //console.log(idElem)
+    this.toastr.success('Hello world!', 'Toastr fun!');
     let id = idElem;
     document.getElementById(id).click();
   }

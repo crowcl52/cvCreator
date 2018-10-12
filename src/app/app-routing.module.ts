@@ -5,13 +5,15 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { DASHBOARDROUTES } from './dashboard/dashboard.routes';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const ROUTES: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {
         path: '', component: DashboardComponent,
-        children: DASHBOARDROUTES 
+        children: DASHBOARDROUTES,
+        canActivate: [AuthGuardService]
     },
     {path: 'view/:id', component: ViewerComponent},
     {path: '**', redirectTo: ''}
