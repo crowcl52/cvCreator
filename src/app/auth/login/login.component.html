@@ -21,7 +21,9 @@
                  name="password"
                  required>
         </div>
-        <button [disabled]="f.invalid" type="submit" class="btn btn-primary col-12">Login</button>
+        <button *ngIf="!loading" [disabled]="f.invalid" type="submit" class="btn btn-primary col-12">Login</button>
+        <button *ngIf="loading" disabled class="btn btn-primary col-12"><i class="fas fa-circle-notch fa-spin"></i> </button>
+
       </form>
       <div class="switch-container">
           <p class="font-weight-bold">No estas registrado?</p>
