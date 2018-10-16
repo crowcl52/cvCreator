@@ -1,73 +1,58 @@
-<!-- skills -->
+<!-- Education -->
 <div class="container mb-5">
     <div class="row align-items-center">
       <div class="col-2">
         <h2>Education</h2>
       </div>
       <div class="col-3">
-        <small (click)="showSchool=!showSchool" class="cursor text-primary">Add new</small>
+        <small (click)="showSchool=!showSchool" class="cursor text-primary">Add Work</small>
       </div>
     </div>
     <!-- formulario de contacto -->
-    <form [ngClass]="{none: !showSchool}" action="" class="mt-2">
+    <form (ngSubmit)="sendWork()" [ngClass]="{none: !showSchool}"  class="mt-2" [formGroup]="educationkForm">
       <div class="form-row">
         <div class="col-12 col-md-3">
           <label for="position">Title</label>
-          <input type="text" class="form-control" name="title" aria-describedby="name" placeholder="ejem. School of Coding">
+          <input type="text" class="form-control" name="title"  placeholder="ejem. School of Coding" formControlName="title" >
         </div>
         <div class="col-12 col-md-3">
           <label for="place">Place</label>
-          <input type="text" class="form-control" name="place" aria-describedby="name" placeholder="ejem. UDG">
+          <input type="text" class="form-control" name="place"  placeholder="ejem. UDG" formControlName="place">
         </div>
         <div class="col-12 col-md-3">
           <label for="date">Start Date</label>
-          <input type="date" class="form-control" name="age">
+          <input type="date" class="form-control" name="startDate" formControlName="startDate">
         </div>
         <div class="col-12 col-md-3">
           <label for="date">Finish Date</label>
-          <input type="date" class="form-control" name="age">
+          <input type="date" class="form-control" name="endDate" formControlName="endDate">
         </div>
       </div>
       <div class="form-row mt-3">
         <div class="col-12 col-md-11">
-          <textarea placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+          <textarea placeholder="description" class="form-control"  rows="1" name="description" formControlName="description"></textarea>
         </div>
         <div class="col-12 col-md-1">
-          <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+          <button *ngIf="!loading" [disabled]="educationkForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
+          </button>
+          <button *ngIf="loading" [disabled]="educationkForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+          </button>
         </div>
       </div>
     </form>
   
     <!-- Work view -->
     <div class="work-wrapper mt-3 row">
-      <!-- ngFor -->
-      <div class="work-item col-7 mt-2">
-        <label>Programming / Hp Inc.</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+      <!-- list works -->
+      <div *ngFor="let school of educations" class="work-item col-7 mt-2">
+        <label>{{school.title}} / {{school.place}}</label> <button (click)="deleteSchool(school)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
         <div class="row">
           <div class="col-7">
-            <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
+            <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> {{school.startDate | date:'mediumDate'}} - {{school.endDate | date:'mediumDate'}}</span>
           </div>
-          <div class="col7">
+          <div class="col-12">
             <p class="mt-2 ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident natus
-              nobis possimus debitis harum,
-              molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum quisquam!
-            </p>
-          </div>
-        </div>
-        <div class="dropdown-divider"></div>
-      </div>
-      <div class="work-item col-7 mt-2">
-        <label>Programming / Hp Inc.</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
-        <div class="row">
-          <div class="col-7">
-            <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
-          </div>
-          <div class="col7">
-            <p class="mt-2 ml-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident natus
-              nobis possimus debitis harum,
-              molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum quisquam!
+              {{school.description}}
             </p>
           </div>
         </div>
