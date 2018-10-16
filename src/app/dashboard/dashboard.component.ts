@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SkillService } from '../creator/skill.service';
+import { WorkService } from '../creator/work.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor( public skillService: SkillService, 
+               public workService: WorkService) { }
 
   ngOnInit() {
+
+    this.skillService.initSkillListener();
+    this.workService.initWorkListener();
   }
 
 }

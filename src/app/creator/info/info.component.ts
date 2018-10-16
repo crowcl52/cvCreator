@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-info',
@@ -11,8 +15,10 @@ export class InfoComponent implements OnInit {
   image = "";
   profileImg;
   change:boolean = false;
+  downloadURL: Observable<string>;
+  uploadPercent: Observable<number>;
 
-  constructor( private toastr: ToastrService ) { }
+  constructor( private toastr: ToastrService, private storage: AngularFireStorage ) { }
 
   ngOnInit() {
   }
@@ -31,9 +37,7 @@ export class InfoComponent implements OnInit {
      let reader = new FileReader();
      reader.onload =  (e) => {
       let img: any = document.getElementById("img_destino");
-      console.log(document.getElementById("img_destino"))
       img.setAttribute('src',reader.result);
-      console.log(reader.result);
      }
      reader.readAsDataURL(input.files[0]);
     }
@@ -45,6 +49,20 @@ export class InfoComponent implements OnInit {
     let file = $event.target.files[0];
     this.change = true;
     this.mostrarImagen($event.target,img);
-    this.profileImg = file;
+    const filePath = 'profile';
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // upload image to server
+    task.snapshotChanges().pipe(
+      finalize(() => {fileRef.getDownloadURL().subscribe(x=>{
+        console.log(x)
+      })} )
+   ).subscribe()
+
+
   }
+  
 }

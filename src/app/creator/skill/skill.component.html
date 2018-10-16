@@ -8,55 +8,48 @@
       <small (click)="showSkill=!showSkill" class="cursor text-primary">Add Skill</small>
     </div>
   </div>
-  <!-- formulario de contacto -->
-  <form [ngClass]="{none: !showSkill}" action="" class="mt-2">
+  <!-- skill Form -->
+  <form (ngSubmit)="sendSkill('skill')" [ngClass]="{none: !showSkill}" action="" class="mt-2" [formGroup]="skillForm">
     <div class="form-row">
       <div class="col-12 col-md-3">
-        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: Programming">
+        <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name: Programming">
       </div>
       <div class="col-12 col-md-3">
-        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+        <input type="number" class="form-control" name="percentage" formControlName="percentage" placeholder="Percentage: 80">
       </div>
       <div class="col-12 col-md-3">
-        <select class="form-control" name="container">
-          <option disabled>Color Bar</option>
-          <option class="bg-dark text-white" value="white"> white</option>
+        <select class="form-control" name="color" formControlName="color">
+          <option value="" disabled>Color Bar</option>
           <option class="text-primary" value="primary"> primary </option>
-          <option class="text-secondary" value="white"> secondary </option>
-          <option class="text-success" value="secondary"> success </option>
+          <option class="text-secondary" value="secondary"> secondary </option>
+          <option class="text-success" value="success"> success </option>
           <option class="text-danger" value="danger"> danger </option>
           <option class="text-warning" value="warning"> warning </option>
           <option class="text-info" value="info"> info </option>
-          <option class="bg-dark text-light" value="light"> light </option>
-          <option class="text-dark" value="dark"> dark </option>
         </select>
       </div>
       <div class="col-12 col-md-3">
-        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+        <button *ngIf="!loading" [disabled]="skillForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
+        </button>
+        <button *ngIf="loading" [disabled]="skillForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+        </button>
       </div>
     </div>
   </form>
 
   <!-- Skills view -->
   <div class="skill-wrapper mt-3 row">
-    <!-- ngFor -->
-    <div class="skill-item col-7 mt-2">
-      <label>Programming</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+    <!-- skills -->
+    <div *ngFor="let skill of skills" class="skill-item col-7 mt-2">
+      <label>{{skill.name}}</label> <button (click)="deleteSkill(skill)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
-      </div>
-    </div>
-    <div class="skill-item col-7 mt-2">
-      <label>Design</label>
-      <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
+        <div [ngClass]="setBgColor(skill.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: skill.percentage+'%'}"
+          aria-valuemin="0" aria-valuemax="100"> {{skill.percentage}}%</div>
       </div>
     </div>
   </div>
 </div>
-<!-- language -->
+<!-- Language -->
 <div class="container mb-5">
   <div class="row align-items-center">
     <div class="col-2">
@@ -66,50 +59,43 @@
       <small (click)="showLanguage=!showLanguage" class="cursor text-primary">Add language</small>
     </div>
   </div>
-  <!-- formulario de contacto -->
-  <form [ngClass]="{none: !showLanguage}" action="" class="mt-2">
+  <!-- form language -->
+  <form (ngSubmit)="sendSkill('lan')" [ngClass]="{none: !showLanguage}" action="" class="mt-2" [formGroup]="lanForm">
     <div class="form-row">
       <div class="col-12 col-md-3">
-        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: Spanish">
+        <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name: Programming">
       </div>
       <div class="col-12 col-md-3">
-        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+        <input type="number" class="form-control" name="percentage" formControlName="percentage" placeholder="Percentage: 80">
       </div>
       <div class="col-12 col-md-3">
-        <select class="form-control" name="container">
-          <option disabled>Color Bar</option>
-          <option class="bg-dark text-white" value="white"> white</option>
+        <select class="form-control" name="color" formControlName="color">
+          <option value="" disabled>Color Bar</option>
           <option class="text-primary" value="primary"> primary </option>
-          <option class="text-secondary" value="white"> secondary </option>
-          <option class="text-success" value="secondary"> success </option>
+          <option class="text-secondary" value="secondary"> secondary </option>
+          <option class="text-success" value="success"> success </option>
           <option class="text-danger" value="danger"> danger </option>
           <option class="text-warning" value="warning"> warning </option>
           <option class="text-info" value="info"> info </option>
-          <option class="bg-dark text-light" value="light"> light </option>
-          <option class="text-dark" value="dark"> dark </option>
         </select>
       </div>
       <div class="col-12 col-md-3">
-        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+        <button *ngIf="!loading" [disabled]="lanForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
+        </button>
+        <button *ngIf="loading" [disabled]="lanForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+        </button>
       </div>
     </div>
   </form>
 
-  <!-- Skills view -->
+  <!-- Language view -->
   <div class="skill-wrapper mt-3 row">
-    <!-- ngFor -->
-    <div class="skill-item col-7 mt-2">
-      <label>Spanish</label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
+    <!-- Language -->
+    <div *ngFor="let language of languages" class="skill-item col-7 mt-2">
+      <label>{{language.name}}</label> <button (click)="deleteSkill(language)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
-      </div>
-    </div>
-    <div class="skill-item col-7 mt-2">
-      <label>English</label>
-      <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
+        <div [ngClass]="setBgColor(language.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: language.percentage+'%'}"
+          aria-valuemin="0" aria-valuemax="100"> {{language.percentage}}%</div>
       </div>
     </div>
   </div>
@@ -124,51 +110,44 @@
       <small (click)="showTool=!showTool" class="cursor text-primary">Add Tool</small>
     </div>
   </div>
-  <!-- formulario de contacto -->
-  <form [ngClass]="{none: !showTool}" action="" class="mt-2">
+  <!-- Tools Form -->
+  <form (ngSubmit)="sendSkill('tool')" [ngClass]="{none: !showTool}" action="" class="mt-2" [formGroup]="toolForm">
     <div class="form-row">
       <div class="col-12 col-md-3">
-        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: C#, Photoshop">
+        <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name: Programming">
       </div>
       <div class="col-12 col-md-3">
-        <input type="number" class="form-control" name="percentage" aria-describedby="percentage" placeholder="Percentage: 80">
+        <input type="number" class="form-control" name="percentage" formControlName="percentage" placeholder="Percentage: 80">
       </div>
       <div class="col-12 col-md-3">
-        <select class="form-control" name="container">
-          <option disabled>Color Bar</option>
-          <option class="bg-dark text-white" value="white"> white</option>
+        <select class="form-control" name="color" formControlName="color">
+          <option value="" disabled>Color Bar</option>
           <option class="text-primary" value="primary"> primary </option>
-          <option class="text-secondary" value="white"> secondary </option>
-          <option class="text-success" value="secondary"> success </option>
+          <option class="text-secondary" value="secondary"> secondary </option>
+          <option class="text-success" value="success"> success </option>
           <option class="text-danger" value="danger"> danger </option>
           <option class="text-warning" value="warning"> warning </option>
           <option class="text-info" value="info"> info </option>
-          <option class="bg-dark text-light" value="light"> light </option>
-          <option class="text-dark" value="dark"> dark </option>
         </select>
       </div>
       <div class="col-12 col-md-3">
-        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+        <button *ngIf="!loading" [disabled]="toolForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
+        </button>
+        <button *ngIf="loading" [disabled]="toolForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+        </button>
       </div>
     </div>
   </form>
 
-  <!-- Skills view -->
+  <!-- Tools view -->
   <div class="skill-wrapper mt-3 row">
     <!-- ngFor -->
-    <div class="skill-item col-7 mt-2">
-      <label>C# </label> <a class="cursor ml-5"> <i class="fas fa-trash text-danger"></i></a>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
+    <div *ngFor="let tool of tools" class="skill-item col-7 mt-2">
+        <label>{{tool.name}}</label> <button (click)="deleteSkill(tool)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
+        <div class="progress">
+          <div [ngClass]="setBgColor(tool.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: tool.percentage+'%'}"
+            aria-valuemin="0" aria-valuemax="100"> {{tool.percentage}}%</div>
+        </div>
       </div>
-    </div>
-    <div class="skill-item col-7 mt-2">
-      <label>Photoshop</label>
-      <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-          aria-valuemax="100">25%</div>
-      </div>
-    </div>
   </div>
 </div>
