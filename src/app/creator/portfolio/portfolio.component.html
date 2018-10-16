@@ -9,23 +9,26 @@
     </div>
   </div>
   <!-- formulario de contacto -->
-  <form [ngClass]="{none: !showItem}" action="" class="mt-2">
+  <form (ngSubmit)="sendPortfolio()" [ngClass]="{none: !showItem}"  class="mt-2" [formGroup]="portfolioForm">
     <div class="form-row">
       <div class="col-8">
         <label for="imageReference">Cover Image</label>
-        <input type="file" class="form-control-file" id="imageReference">
+        <input type="file" class="form-control-file" name="img" (change)="takeImg($event)"  accept="image/x-png,image/jpeg">
       </div>
     </div>
     <div class="form-row mt-4">
       <div class="col-12 col-md-3">
-        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Name: My first Project">
+        <input type="text" class="form-control" placeholder="Name: My first Project" name="name" formControlName="name" > 
       </div>
       <div class="col-12 col-md-3">
-        <input type="url" class="form-control" name="percentage" aria-describedby="percentage" placeholder="url: http://myporfolioUrl.com">
+        <input type="url" class="form-control" placeholder="url: http://myporfolioUrl.com" name="url" formControlName="url" >
       </div>
 
       <div class="col-12 col-md-3">
-        <button type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i> </button>
+          <button *ngIf="!loading" [disabled]="(portfolioForm.invalid || !areImg)" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
+          </button>
+          <button *ngIf="loading" disabled type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+          </button>
       </div>
     </div>
   </form>
@@ -33,11 +36,11 @@
   <!-- Cards view -->
   <div class="skill-wrapper mt-3 row">
     <!-- ngFor -->
-    <div class="col-5 mt-3">
-      <label>Dashboard</label> <button class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
+    <div *ngFor="let portfolio of portfolios" class="col-5 mt-3">
+      <label>{{portfolio.name}}</label> <button (click)="deletePortfolio(portfolio)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
       <div class="container-img">
-        <img src="./assets/login.jpg" alt="Avatar" class="image">
-        <div class="overlay">Dashbord</div>
+        <img [src]="portfolio.img" [alt]="portfolio.imgName" class="image">
+        <div class="overlay">{{portfolio.name}}</div>
       </div>
     </div>
   </div>
