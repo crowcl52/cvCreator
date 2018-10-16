@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,9 +19,36 @@ export class InfoComponent implements OnInit {
   downloadURL: Observable<string>;
   uploadPercent: Observable<number>;
 
+  infoForm: FormGroup;
+
+  loadingSubscription: Subscription = new Subscription();
+  loading: boolean = false;
+
   constructor( private toastr: ToastrService, private storage: AngularFireStorage ) { }
 
   ngOnInit() {
+    this.infoForm = new FormGroup({
+      'name': new FormControl('', Validators.required),
+      'title': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.required),
+      'country': new FormControl('', Validators.required),
+      'city': new FormControl('', Validators.required),
+      'age': new FormControl('', Validators.required),
+      'phone': new FormControl('', Validators.required),
+      'facebook': new FormControl(''),
+      'pinterest': new FormControl(''),
+      'twitter': new FormControl(''),
+      'instagram': new FormControl(''),
+      'linkedin': new FormControl(''),
+      'github': new FormControl(''),
+      'bgColor': new FormControl('white'),
+      'contColor': new FormControl('white'),
+      'titleColor': new FormControl('white'),
+      'txtColor': new FormControl('white'),
+      'fooColor': new FormControl('white'),
+      'socColor': new FormControl('white'),
+      'iconColor': new FormControl('white')
+    })
   }
   
   // Funcion para tomar la imagen
@@ -63,6 +91,10 @@ export class InfoComponent implements OnInit {
    ).subscribe()
 
 
+  }
+
+  sendInfo(){
+    console.log(this.infoForm.value);
   }
   
 }

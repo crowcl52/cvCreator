@@ -7,3 +7,9 @@
 .image-container img{
     width: 100%;
 }
+
+.send-info{
+    position: fixed;
+    bottom: 20px;
+    right: 5%;
+}
