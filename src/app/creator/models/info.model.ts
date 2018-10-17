@@ -1,4 +1,5 @@
-export class WorkModel {
+export class InfoModel {
+    image:string;
     name: string;
     title: string;
     email: string;
@@ -21,6 +22,7 @@ export class WorkModel {
     iconColor: string;
 
     constructor(obj: DataObj) {
+        this.image = obj && obj.image || null;
         this.name = obj && obj.name || null;
         this.title = obj && obj.title || null;
         this.email = obj && obj.email || null;
@@ -40,11 +42,12 @@ export class WorkModel {
         this.txtColor = obj && obj.txtColor || null;
         this.fooColor = obj && obj.fooColor || null;
         this.socColor = obj && obj.socColor || null;
-        this.iconColor = obj && obj.github || null;
+        this.iconColor = obj && obj.iconColor || null;
     }
 }
 
 interface DataObj {
+    image:string;
     name: string;
     title: string;
     email: string;

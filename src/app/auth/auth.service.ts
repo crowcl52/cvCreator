@@ -12,6 +12,7 @@ import { AppState } from '../app.reducer';
 import { ActivateLoadingAction, DesactivateLoadingAction } from '../shared/ui.actions';
 import { SetUserAction } from './auth.actions';
 import { Subscription } from 'rxjs';
+import { InfoModel } from '../creator/models/info.model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,8 +64,14 @@ export class AuthService {
       }
       
       this.afDB.doc(`${user.uid}/user`).set( user).then(data =>{
-        this.store.dispatch(new DesactivateLoadingAction() );
-        this.router.navigate(['/']);
+        // create model item
+        this.createInfo(user).then(data=>{
+          this.store.dispatch(new DesactivateLoadingAction() );
+          this.router.navigate(['/']);
+        }).catch(err=>{
+          this.store.dispatch(new DesactivateLoadingAction() );
+          swal("error",err.message,"error");
+        })
       })
 
     }).catch(err=>{
@@ -89,6 +96,34 @@ export class AuthService {
   logout(){
     this.router.navigate(['/login']);
     this.afAuth.auth.signOut();
+  }
+
+  // Create info
+  createInfo(user){
+    const info:InfoModel = new InfoModel({
+      image:'',
+      name: 'John Doe',
+      title: 'Engineer',
+      email: 'mail@mail.com',
+      country: 'México',
+      city: 'Guadalajara',
+      age: 18,
+      phone: '333333333',
+      facebook: null,
+      twitter: null,
+      instagram: null,
+      pinterest: null,
+      linkedin: null,
+      github: null,
+      bgColor: 'light',
+      contColor: 'white',
+      titleColor: 'dark',
+      txtColor: 'dark',
+      fooColor: 'secondary',
+      socColor: 'info',
+      iconColor: 'info',
+    })
+    return this.afDB.doc(`${user.uid}/info`).set({...info});
   }
 
   getUSer(){

@@ -1,84 +1,69 @@
-<section class="main-view bg-light">
+<section class="main-view bg-light pb-3" [ngClass]="setBgColor(info.bgColor)">
   <!-- Contenedor del diseño -->
   <div class="row">
     <!-- first container -->
     <div class="col-12 col-lg-3 offset-lg-1 mt-3">
       <div class="main-container">
-        <div class="bg-white shadow-sm rounded">
+        <div [ngClass]="setBgColor(info.contColor)" class="shadow-sm rounded">
           <!-- Profile image -->
           <div class="profile-image">
-            <img class="rounded-top" src="https://crowcl52.github.io/cv-page/assets/perfil.jpg" width="100%" alt="profile img">
-            <h4 class="image-title text-white"><b>Eduardo Sánchez</b> <small> - 24 years </small></h4>
+            <img class="rounded-top" [src]="info.image" width="100%" alt="profile img">
+            <p class="image-title text-white"><b>{{info.name}}</b> <small> - {{info.age}} years </small></p>
           </div>
           <!-- Personal Info -->
           <div class="row p-4">
-            <p class="col-12"><i class="fas fa-briefcase text-info"></i> <span class="text-dark ml-2">Programmer</span>
+            <p class="col-12"><i class="fas fa-briefcase" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.txtColor)"
+                class="ml-2">{{info.title}}</span>
             </p>
-            <p class="col-12"><i class="fas fa-home text-info"></i> <span class="text-dark ml-2">Guadalajara,Mex</span>
+            <p class="col-12"><i class="fas fa-home" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.txtColor)"
+                class="ml-2">{{info.city}},{{info.country}}</span>
             </p>
-            <p class="col-12"><i class="fas fa-envelope text-info"></i> <span class="text-dark ml-2">ex@mail.com</span>
+            <p class="col-12"><i class="fas fa-envelope" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.txtColor)"
+                class="ml-2">{{info.email}}</span>
             </p>
-            <p class="col-12"><i class="fas fa-mobile-alt text-info"></i> <span class="text-dark ml-2">333-333-333</span>
+            <p class="col-12"><i class="fas fa-mobile-alt" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.txtColor)"
+                class="ml-2">{{info.phone}}</span>
             </p>
             <div class="divider mt-2"></div>
           </div>
           <!-- skills -->
           <div class="row p-4">
-            <h4><i class="fas fa-chart-bar text-info"></i> <span class="text-dark"> Skills </span> </h4>
-            <!-- ngFor -->
-            <div class="skill-item col-12 mt-2">
-              <label>Programming</label>
+            <h4><i class="fas fa-chart-bar" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.titleColor)">
+                Skills </span> </h4>
+            <div *ngFor="let skill of skills" class="skill-item col-12 mt-2">
+              <label [ngClass]="setTxtColor(info.txtColor)">{{skill.name}}</label>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
-              </div>
-            </div>
-            <div class="skill-item col-12 mt-2">
-              <label>Programming</label>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
+                <div [ngClass]="setBgColor(skill.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: skill.percentage+'%'}"
+                  aria-valuemin="0" aria-valuemax="100"> {{skill.percentage}}%</div>
               </div>
             </div>
             <div class="divider mt-4"></div>
           </div>
           <!-- Tools -->
           <div class="row p-4">
-            <h4><i class="fas fa-toolbox text-info"></i> <span class="text-dark"> Tools </span> </h4>
+            <h4><i class="fas fa-toolbox" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.titleColor)">
+                Tools </span> </h4>
             <!-- ngFor -->
-            <div class="skill-item col-12 mt-2">
-              <label>Photoshop</label>
+            <div *ngFor="let tool of tools" class="skill-item col-12 mt-2">
+              <label [ngClass]="setTxtColor(info.txtColor)">{{tool.name}}</label>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
-              </div>
-            </div>
-            <div class="skill-item col-12 mt-2">
-              <label>Visual Studio</label>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
-              </div>
+                  <div [ngClass]="setBgColor(tool.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: tool.percentage+'%'}"
+                    aria-valuemin="0" aria-valuemax="100"> {{tool.percentage}}%</div>
+                </div>
             </div>
             <div class="divider mt-4"></div>
           </div>
           <!-- Language -->
           <div class="row p-4">
-            <h4><i class="fas fa-language text-info"></i> <span class="text-dark"> Language </span> </h4>
+            <h4><i class="fas fa-language" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.titleColor)">
+                Language </span> </h4>
             <!-- ngFor -->
-            <div class="skill-item col-12 mt-2">
-              <label>Spanish</label>
+            <div *ngFor="let language of languages" class="skill-item col-12 mt-2">
+              <label [ngClass]="setTxtColor(info.txtColor)">{{language.name}}</label>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
-              </div>
-            </div>
-            <div class="skill-item col-12 mt-2">
-              <label>English</label>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                  aria-valuemax="100">25%</div>
-              </div>
+                  <div [ngClass]="setBgColor(language.color)" class="progress-bar" role="progressbar" [ngStyle]="{width: language.percentage+'%'}"
+                    aria-valuemin="0" aria-valuemax="100"> {{language.percentage}}%</div>
+                </div>
             </div>
             <div class="divider mt-4"></div>
           </div>
@@ -89,44 +74,24 @@
     <div class="col-12 col-lg-6 mt-3">
       <div class="main-container">
         <!-- Work Container -->
-        <div class="bg-white shadow-sm rounded">
+        <div [ngClass]="setBgColor(info.contColor)" class="shadow-sm rounded">
           <div class="row p4">
             <h3 class="col-8 m-4">
-              <i class="fas fa-business-time text-info mr-3"></i>
-              <span class="text-dark"> Work Experience </span>
+              <i class="fas fa-business-time mr-3" [ngClass]="setTxtColor(info.iconColor)"></i>
+              <span [ngClass]="setTxtColor(info.titleColor)"> Work Experience </span>
             </h3>
-            <!-- ngFor -->
-            <div class="work-item col-10 ml-5 mt-2">
-              <label>Programming / Hp Inc.</label>
+            <div *ngFor="let work of works" class="work-item col-10 ml-5 mt-2">
+              <label [ngClass]="setTxtColor(info.txtColor)">{{work.position}} / {{work.place}}</label>
               <div class="row">
                 <div class="col-7">
-                  <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
+                  <i class="fas fa-calendar mr-3" [ngClass]="setTxtColor(info.iconColor)"></i> 
+                  <span [ngClass]="setTxtColor(info.iconColor)">
+                      {{work.startDate | date:'mediumDate'}} - {{work.endDate | date:'mediumDate'}}
+                  </span>
                 </div>
-                <div class="col7">
-                  <p class="mt-2 ml-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident
-                    natus
-                    nobis possimus debitis harum,
-                    molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum
-                    quisquam!
-                  </p>
-                </div>
-              </div>
-              <div class="dropdown-divider"></div>
-            </div>
-            <div class="work-item col-10 ml-5 mt-2">
-              <label>Programming / Hp Inc.</label>
-              <div class="row">
-                <div class="col-7">
-                  <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
-                </div>
-                <div class="col7">
-                  <p class="mt-2 ml-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident
-                    natus
-                    nobis possimus debitis harum,
-                    molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum
-                    quisquam!
+                <div class="col-12">
+                  <p class="mt-2 ml-3" [ngClass]="setTxtColor(info.txtColor)">
+                      {{work.description}}
                   </p>
                 </div>
               </div>
@@ -135,44 +100,23 @@
           </div>
         </div>
         <!-- Education Container -->
-        <div class="bg-white shadow-sm rounded mt-3">
+        <div [ngClass]="setBgColor(info.contColor)" class="shadow-sm rounded mt-3">
           <div class="row p4">
             <h3 class="col-8 m-4">
-              <i class="fas fa-business-time text-info mr-3"></i>
-              <span class="text-dark"> Education </span>
+              <i class="fas fa-graduation-cap mr-3" [ngClass]="setTxtColor(info.iconColor)"></i>
+              <span [ngClass]="setTxtColor(info.titleColor)"> Education </span>
             </h3>
             <!-- ngFor -->
-            <div class="work-item col-10 ml-5 mt-2">
-              <label>Programming / Hp Inc.</label>
+            <div *ngFor="let education of educations" class="work-item col-10 ml-5 mt-2">
+              <label [ngClass]="setTxtColor(info.txtColor)">{{education.title}} / {{education.place}}</label>
               <div class="row">
                 <div class="col-7">
-                  <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
+                  <i class="fas fa-calendar mr-3" [ngClass]="setTxtColor(info.iconColor)"></i> <span [ngClass]="setTxtColor(info.iconColor)">
+                      {{education.startDate | date:'mediumDate'}} - {{education.endDate | date:'mediumDate'}}</span>
                 </div>
-                <div class="col7">
-                  <p class="mt-2 ml-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident
-                    natus
-                    nobis possimus debitis harum,
-                    molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum
-                    quisquam!
-                  </p>
-                </div>
-              </div>
-              <div class="dropdown-divider"></div>
-            </div>
-            <div class="work-item col-10 ml-5 mt-2">
-              <label>Programming / Hp Inc.</label>
-              <div class="row">
-                <div class="col-7">
-                  <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> Dec/2012 - Octuber/2015</span>
-                </div>
-                <div class="col7">
-                  <p class="mt-2 ml-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque itaque voluptatibus provident
-                    natus
-                    nobis possimus debitis harum,
-                    molestiae sapiente, ullam explicabo laudantium fugiat a! Eligendi reiciendis ad tempora illum
-                    quisquam!
+                <div class="col-12">
+                  <p class="mt-2 ml-3" [ngClass]="setTxtColor(info.txtColor)">
+                 {{education.description}}
                   </p>
                 </div>
               </div>
@@ -181,36 +125,18 @@
           </div>
         </div>
         <!-- Portfolio Container -->
-        <div class="bg-white shadow-sm rounded mt-3 mb-3">
+        <div [ngClass]="setBgColor(info.contColor)" class="shadow-sm rounded mt-3 mb-3">
           <div class="row p4">
             <h3 class="col-8 m-4">
-              <i class="fas fa-folder-open text-info mr-3"></i>
-              <span class="text-dark"> Portfolio </span>
+              <i class="fas fa-folder-open mr-3" [ngClass]="setTxtColor(info.iconColor)"></i>
+              <span [ngClass]="setTxtColor(info.titleColor)"> Portfolio </span>
             </h3>
             <div class="portfolio-wrapper col-12 mt-2 ml-5 row">
               <!-- ngFor -->
-              <a class="cursor col-lg-6 col-12 mt-3">
+              <a *ngFor="let portfolio of portfolios" class="cursor col-lg-6 col-12 mt-3" [href]="portfolio.url" target="_blank">
                 <div class="container-img">
-                  <img src="./assets/login.jpg" alt="Avatar" class="image">
-                  <div class="overlay">Dashbord</div>
-                </div>
-              </a>
-              <a class="cursor col-lg-6 col-12 mt-3">
-                <div class="container-img">
-                  <img src="./assets/login.jpg" alt="Avatar" class="image">
-                  <div class="overlay">Dashbord</div>
-                </div>
-              </a>
-              <a class="cursor col-lg-6 col-12 mt-3">
-                <div class="container-img">
-                  <img src="./assets/login.jpg" alt="Avatar" class="image">
-                  <div class="overlay">Dashbord</div>
-                </div>
-              </a>
-              <a class="cursor col-lg-6 col-12 mt-3">
-                <div class="container-img">
-                  <img src="./assets/login.jpg" alt="Avatar" class="image">
-                  <div class="overlay">Dashbord</div>
+                  <img [src]="portfolio.img" [alt]="portfolio.imgName" class="image">
+                  <div class="overlay">{{portfolio.name}}</div>
                 </div>
               </a>
             </div>
@@ -223,14 +149,15 @@
 </section>
 
 <footer class="view-footer bg-info">
-  <span class="text-white"> Find me on social media.</span>
+  <span [ngClass]="setTxtColor(info.socColor)"> Find me on social media.</span>
   <div class="social-wrapper">
-      <a href=""> <i class="fab fa-facebook text-white"></i> </a>
-      <a href=""> <i class="fab fa-pinterest-square text-white"></i> </a>
-      <a href=""> <i class="fab fa-instagram text-white"></i> </a>
-      <a href=""> <i class="fab fa-twitter text-white"></i> </a>
-      <a href=""> <i class="fab fa-linkedin-in text-white"></i> </a>
-      <a href=""> <i class="fab fa-github text-white"></i> </a>
+    <a *ngIf="info.facebook != null" target="_blank" [href]="info.facebook"> <i class="fab fa-facebook " [ngClass]="setTxtColor(info.socColor)"></i> </a>
+    <a *ngIf="info.pinterest != null" target="_blank" [href]="info.pinterest"> <i class="fab fa-pinterest-square " [ngClass]="setTxtColor(info.socColor)"></i> </a>
+    <a *ngIf="info.instagram != null" target="_blank" [href]="info.instagram"> <i class="fab fa-instagram " [ngClass]="setTxtColor(info.socColor)"></i> </a>
+    <a *ngIf="info.twitter != null" target="_blank" [href]="info.twitter"> <i class="fab fa-twitter " [ngClass]="setTxtColor(info.socColor)"></i> </a>
+    <a *ngIf="info.linkedin != null" target="_blank" [href]="info.linkedin"> <i class="fab fa-linkedin-in " [ngClass]="setTxtColor(info.socColor)"></i> </a>
+    <a *ngIf="info.github != null" target="_blank" [href]="info.github"> <i class="fab fa-github " [ngClass]="setTxtColor(info.socColor)"></i> </a>
   </div>
-  <p class="text-white"> Powered by <a class="text-white" href=""> Eduardo Sánchez </a> </p>
+  <p [ngClass]="setTxtColor(info.socColor)"> Powered by <a [ngClass]="setTxtColor(info.socColor)" href=""> Eduardo
+      Sánchez </a> </p>
 </footer>
