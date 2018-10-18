@@ -35,6 +35,10 @@ export class SkillComponent implements OnInit, OnDestroy {
               private store: Store<AppState>) { }
 
   ngOnInit() {
+
+    // Scroll top
+    window.scrollTo(0, 0);
+
     this.store.select('skill').subscribe(skills => {
       this.skills = skills.items.filter(x => x.type == 'skill');
       this.languages = skills.items.filter(x => x.type == 'lan');

@@ -9,15 +9,15 @@
     </div>
   </div>
   <!-- formulario de contacto -->
-  <form (ngSubmit)="sendWork()" [ngClass]="{none: !showWork}"  class="mt-2" [formGroup]="workForm">
+  <form (ngSubmit)="sendWork()" [ngClass]="{none: !showWork}" class="mt-2" [formGroup]="workForm">
     <div class="form-row">
       <div class="col-12 col-md-3">
         <label for="position">Position</label>
-        <input type="text" class="form-control" name="position"  placeholder="ejem. Web Developer" formControlName="position" >
+        <input type="text" class="form-control" name="position" placeholder="ejem. Web Developer" formControlName="position">
       </div>
       <div class="col-12 col-md-3">
         <label for="place">Place</label>
-        <input type="text" class="form-control" name="place"  placeholder="ejem. Intell" formControlName="place">
+        <input type="text" class="form-control" name="place" placeholder="ejem. Intell" formControlName="place">
       </div>
       <div class="col-12 col-md-3">
         <label for="date">Start Date</label>
@@ -30,7 +30,7 @@
     </div>
     <div class="form-row mt-3">
       <div class="col-12 col-md-11">
-        <textarea placeholder="description" class="form-control"  rows="1" name="description" formControlName="description"></textarea>
+        <textarea placeholder="description" class="form-control" rows="1" name="description" formControlName="description"></textarea>
       </div>
       <div class="col-12 col-md-1">
         <button *ngIf="!loading" [disabled]="workForm.invalid" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
@@ -39,16 +39,19 @@
         </button>
       </div>
     </div>
+    <p class="text-muted">All fields are required</p>
   </form>
 
   <!-- Work view -->
   <div class="work-wrapper mt-3 row">
     <!-- list works -->
     <div *ngFor="let work of works" class="work-item col-7 mt-2">
-      <label>{{work.position}} / {{work.place}}</label> <button (click)="deleteWork(work)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
+      <label>{{work.position}} / {{work.place}}</label> <button (click)="deleteWork(work)" class="cursor ml-5 btn btn-link">
+        <i class="fas fa-trash text-danger"></i></button>
       <div class="row">
         <div class="col-7">
-          <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> {{work.startDate | date:'mediumDate'}} - {{work.endDate | date:'mediumDate'}}</span>
+          <i class="fas fa-calendar text-info mr-3"></i> <span class="text-info"> {{work.startDate |
+            date:'mediumDate'}} - {{work.endDate | date:'mediumDate'}}</span>
         </div>
         <div class="col-12">
           <p class="mt-2 ml-3">
@@ -57,6 +60,10 @@
         </div>
       </div>
       <div class="dropdown-divider"></div>
+    </div>
+    <!-- Alert to add new item -->
+    <div *ngIf="works.length < 1" class="alert alert-secondary" role="alert">
+      Oh! you don't have items please add one.
     </div>
   </div>
 </div>

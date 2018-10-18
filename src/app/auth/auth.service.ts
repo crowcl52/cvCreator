@@ -35,8 +35,8 @@ export class AuthService {
           this.user = newUser;
         })
       }else{
-        this.user = null;
-        this.userSubscription.unsubscribe();
+        // this.user = null;
+        // this.userSubscription.unsubscribe();
       }
     });
   }
@@ -101,7 +101,7 @@ export class AuthService {
   // Create info
   createInfo(user){
     const info:InfoModel = new InfoModel({
-      image:'',
+      image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwQzkGr6zOpQD7nG8YtZIIzlutO7kOL1NkG88BOH5fNVBqkwWc',
       name: 'John Doe',
       title: 'Engineer',
       email: 'mail@mail.com',
@@ -120,7 +120,7 @@ export class AuthService {
       titleColor: 'dark',
       txtColor: 'dark',
       fooColor: 'secondary',
-      socColor: 'info',
+      socColor: 'white',
       iconColor: 'info',
     })
     return this.afDB.doc(`${user.uid}/info`).set({...info});

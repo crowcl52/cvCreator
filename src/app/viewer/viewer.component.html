@@ -1,4 +1,4 @@
-<section class="main-view bg-light pb-3" [ngClass]="setBgColor(info.bgColor)">
+<section class="main-view pb-3" [ngClass]="setBgColor(info.bgColor)">
   <!-- Contenedor del diseño -->
   <div class="row">
     <!-- first container -->
@@ -148,7 +148,7 @@
   </div>
 </section>
 
-<footer class="view-footer bg-info">
+<footer class="view-footer" [ngClass]="setBgColor(info.fooColor)">
   <span [ngClass]="setTxtColor(info.socColor)"> Find me on social media.</span>
   <div class="social-wrapper">
     <a *ngIf="info.facebook != null" target="_blank" [href]="info.facebook"> <i class="fab fa-facebook " [ngClass]="setTxtColor(info.socColor)"></i> </a>

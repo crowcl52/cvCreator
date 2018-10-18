@@ -9,39 +9,46 @@
     </div>
   </div>
   <!-- formulario de contacto -->
-  <form (ngSubmit)="sendPortfolio()" [ngClass]="{none: !showItem}"  class="mt-2" [formGroup]="portfolioForm">
+  <form (ngSubmit)="sendPortfolio()" [ngClass]="{none: !showItem}" class="mt-2" [formGroup]="portfolioForm">
     <div class="form-row">
       <div class="col-8">
         <label for="imageReference">Cover Image</label>
-        <input type="file" class="form-control-file" name="img" (change)="takeImg($event)"  accept="image/x-png,image/jpeg">
+        <input type="file" class="form-control-file" name="img" (change)="takeImg($event)" accept="image/x-png,image/jpeg">
       </div>
     </div>
     <div class="form-row mt-4">
       <div class="col-12 col-md-3">
-        <input type="text" class="form-control" placeholder="Name: My first Project" name="name" formControlName="name" > 
+        <input type="text" class="form-control" placeholder="Name: My first Project" name="name" formControlName="name">
       </div>
       <div class="col-12 col-md-3">
-        <input type="url" class="form-control" placeholder="url: http://myporfolioUrl.com" name="url" formControlName="url" >
+        <input type="url" class="form-control" placeholder="url: http://myporfolioUrl.com" name="url" formControlName="url">
       </div>
 
       <div class="col-12 col-md-3">
-          <button *ngIf="!loading" [disabled]="(portfolioForm.invalid || !areImg)" type="submit" class="btn btn-info bt-lg"><i class="fas fa-plus"></i>
-          </button>
-          <button *ngIf="loading" disabled type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
-          </button>
+        <button *ngIf="!loading" [disabled]="(portfolioForm.invalid || !areImg)" type="submit" class="btn btn-info bt-lg"><i
+            class="fas fa-plus"></i>
+        </button>
+        <button *ngIf="loading" disabled type="submit" class="btn btn-info bt-lg"><i class="fas fa-circle-notch fa-spin"></i>
+        </button>
       </div>
     </div>
+    <p class="text-muted">All fields are required</p>
   </form>
 
   <!-- Cards view -->
   <div class="skill-wrapper mt-3 row">
     <!-- ngFor -->
     <div *ngFor="let portfolio of portfolios" class="col-5 mt-3">
-      <label>{{portfolio.name}}</label> <button (click)="deletePortfolio(portfolio)" class="cursor ml-5 btn btn-link"> <i class="fas fa-trash text-danger"></i></button>
+      <label>{{portfolio.name}}</label> <button (click)="deletePortfolio(portfolio)" class="cursor ml-5 btn btn-link">
+        <i class="fas fa-trash text-danger"></i></button>
       <div class="container-img">
         <img [src]="portfolio.img" [alt]="portfolio.imgName" class="image">
         <div class="overlay">{{portfolio.name}}</div>
       </div>
+    </div>
+    <!-- Alert to add new item -->
+    <div *ngIf="portfolios.length < 1" class="alert alert-secondary" role="alert">
+      Oh! you don't have items please add one.
     </div>
   </div>
 </div>
